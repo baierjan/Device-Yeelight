@@ -26,7 +26,7 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-This module provide base class for detecting Yeelight devices.
+This module provides base class for detecting Yeelight devices.
 
     use Device::Yeelight;
 
@@ -35,6 +35,7 @@ This module provide base class for detecting Yeelight devices.
     foreach my $device (@devices) {
         my %props = %{$device->get_prop(qw/power/)};
         say "The light is $props{power}";
+        $device->set_power('on', 'smooth', 1000);
     }
     ...
 
@@ -92,12 +93,13 @@ EOQ
     while ( @ready = $sel->can_read ) {
         foreach my $fh (@ready) {
             my $data;
-            $fh->recv( $data, 4096 ) or croak $!;
+            $fh->recv( $data, 4096 );
             $self->parse_response($data) if $data =~ m#^HTTP/1\.1 200 OK\r\n#;
             $sel->remove($fh);
             $fh->close;
         }
     }
+    $socket->close;
     return $self->{devices};
 }
 
@@ -118,7 +120,9 @@ sub parse_response {
       );
     $device->{support} = [ split( ' ', $device->{support} ) ]
       if defined $device->{support};
-    push @{ $self->{devices} }, Device::Yeelight::Light->new(%$device);
+
+    push @{ $self->{devices} }, Device::Yeelight::Light->new(%$device)
+      unless grep { $device->{id} eq $_->{id} } @{ $self->{devices} };
 }
 
 =head1 AUTHOR
