@@ -1,5 +1,3 @@
-Revision history for Device-Yeelight
-
-0.01    Date/time
-        First version, released on an unsuspecting world.
-
+0.10    2019/03/06
+- added local discovery
+- added API calls

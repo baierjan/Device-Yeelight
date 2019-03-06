@@ -1,16 +1,17 @@
 Device-Yeelight
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+Yeelight smart LED products support remote control through WiFi. When user
+received the smart LED device for the first time, he/she needs to complete a
+configuration procedure to provision the router's SSID and password to the
+device. This procedure is normally called SmartConfig or QuickConnect. Due to
+security consideration, the protocol used for SmartConfig is proprietary, which
+means no 3rd party could know about it or use it. However, after the device is
+connected to the router, it can be seen by all the devices under the same
+network, thus could also be controlled by 3rd party equipment that understands
+the inter-operation control protocol.
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
-
+This Perl module implements local device discovery via Yeeling specific SSDP
+protocol and sending commands via control protocol in the JSON format.
 
 INSTALLATION
 
@@ -26,22 +27,8 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Device::Yeelight
-
-You can also look for information at:
-
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Device-Yeelight
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Device-Yeelight
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Device-Yeelight
-
-    Search CPAN
-        http://search.cpan.org/dist/Device-Yeelight/
-
+	perldoc Device::Yeelight
+	perldoc Device::Yeelight::Light
 
 LICENSE AND COPYRIGHT
 

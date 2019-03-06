@@ -1,13 +1,12 @@
 package Device::Yeelight::Light;
 
-use 5.006;
+use 5.026;
 use utf8;
 use strict;
 use warnings;
 
 use Carp;
 use JSON;
-use Data::Dumper;
 use IO::Socket;
 
 =encoding utf8
@@ -17,11 +16,11 @@ Device::Yeelight::Light - WiFi Smart LED Light
 
 =head1 VERSION
 
-Version 0.01
+Version 0.10
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.10';
 
 =head1 SYNOPSIS
 
@@ -673,13 +672,13 @@ Refer to C<adjust_bright>, C<adjust_ct>, C<adjust_color>.
 This method is used to toggle the main light and background light at the same
 time.
 
-=head1 SEE ALSO
-
-This API is described in the Yeeling WiFi Light Inter-Operation Specification.
-
 =head1 AUTHOR
 
 Jan Baier, C<< <jan.baier at amagical.net> >>
+
+=head1 SEE ALSO
+
+This API is described in the Yeeling WiFi Light Inter-Operation Specification.
 
 =head1 LICENSE AND COPYRIGHT
 

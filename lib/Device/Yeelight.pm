@@ -1,12 +1,11 @@
 package Device::Yeelight;
 
-use 5.006;
+use 5.026;
 use utf8;
 use strict;
 use warnings;
 
 use Carp;
-use Data::Dumper;
 use IO::Select;
 use IO::Socket::Multicast;
 use Device::Yeelight::Light;
@@ -18,15 +17,18 @@ Device::Yeelight - Controller for Yeelight smart devices
 
 =head1 VERSION
 
-Version 0.01
+Version 0.10
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.10';
 
 =head1 SYNOPSIS
 
-This module provides base class for detecting Yeelight devices.
+This Perl module implements local device discovery via Yeeling specific SSDP
+protocol and sending commands via control protocol in the JSON format.
+
+Device::Yeelight module provides base class for detecting Yeelight devices.
 
     use Device::Yeelight;
 
@@ -129,10 +131,14 @@ sub parse_response {
 
 Jan Baier, C<< <jan.baier at amagical.net> >>
 
+=head1 SEE ALSO
+
+L<Device::Yeelight::Light>
+
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-device-yeelight at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Device-Yeelight>.
+Please report any bugs or feature requests via
+L<https://github.com/baierjan/Device-Yeelight>
 
 =head1 LICENSE AND COPYRIGHT
 
