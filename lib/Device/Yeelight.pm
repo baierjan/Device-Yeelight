@@ -17,11 +17,11 @@ Device::Yeelight - Controller for Yeelight smart devices
 
 =head1 VERSION
 
-Version 0.11
+Version 0.12
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 SYNOPSIS
 
@@ -124,7 +124,7 @@ sub parse_response {
       foreach (
         qw/location id model fw_ver support power bright color_mode ct rgb hue sat name/
       );
-    $device->{support} = [ split( ' ', $device->{support} ) ]
+    $device->{support} = [ sort split( ' ', $device->{support} ) ]
       if defined $device->{support};
 
     push @{ $self->{devices} }, Device::Yeelight::Light->new(%$device)

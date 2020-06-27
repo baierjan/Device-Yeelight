@@ -1,0 +1,64 @@
+=encoding utf8
+=head1 NAME
+
+Device::Yeelight - Controller for Yeelight smart devices
+
+=head1 VERSION
+
+Version 0.12
+
+=head1 SYNOPSIS
+
+This Perl module implements local device discovery via Yeeling specific SSDP
+protocol and sending commands via control protocol in the JSON format.
+
+Device::Yeelight module provides base class for detecting Yeelight devices.
+
+    use Device::Yeelight;
+
+    my $yeelight = Device::Yeelight->new();
+    my @devices = @{$yeelight->search()};
+    foreach my $device (@devices) {
+        my %props = %{$device->get_prop(qw/power/)};
+        say "The light is $props{power}";
+        $device->set_power('on', 'smooth', 1000);
+    }
+    ...
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new
+
+Creates new Yeelight controller.
+
+=head2 search
+
+Sends search request message and waits for devices response.
+
+=head2 parse_response
+
+Parse response message from Yeelight device.
+
+=head1 AUTHOR
+
+Jan Baier, C<< <jan.baier at amagical.net> >>
+
+=head1 SEE ALSO
+
+L<Device::Yeelight::Light>
+
+=head1 BUGS
+
+Please report any bugs or feature requests via
+L<https://github.com/baierjan/Device-Yeelight>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2019 Jan Baier.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See L<http://dev.perl.org/licenses/> for more information.
+
