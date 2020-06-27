@@ -90,7 +90,10 @@ HOST: $self->{address}:$self->{port}\r
 MAN: "ssdp:discover"\r
 ST: wifi_bulb\r
 EOQ
-    $socket->mcast_send( $query, "$self->{address}:$self->{port}" ) or croak $!;
+
+    ${*$socket}{'io_socket_mcast_dest'} = sockaddr_in(int($self->{port}),inet_aton($self->{address}));
+
+    $socket->mcast_send( $query ) or croak $!;
     $socket->close;
 
     my @ready;
