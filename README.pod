@@ -15,6 +15,7 @@ protocol and sending commands via control protocol in the JSON format.
 Device::Yeelight module provides base class for detecting Yeelight devices.
 
     use Device::Yeelight;
+    use feature 'say';
 
     my $yeelight = Device::Yeelight->new();
     my @devices = @{$yeelight->search()};
